@@ -16,6 +16,7 @@ exports.sourceNodes = async (
   // helper function that processes a publication to match Gatsby's node structure
   const processPub = (pub, query) => ({
     ...pub,
+    query,
     id: createNodeId(pub.url),
     parent: null,
     children: [],
@@ -23,8 +24,7 @@ exports.sourceNodes = async (
       type: `GoogleScholar`,
       content: JSON.stringify(pub),
       contentDigest: createContentDigest(pub),
-      description: nodeInternalDescription(query),
-      query,
+      description: nodeInternalDescription(query)
     },
   })
 
